@@ -15,7 +15,8 @@ public class TournamentSelectionTest {
   public void testSelectParents() {
     String target = "Hello, World!";
     FitnessMethod<char[]> fitnessMethod = new StringFitnessMethod(target.toCharArray());
-    TournamentSelection<char[]> selectionMethod = new TournamentSelection<char[]>(fitnessMethod);
+    CrossoverSelectionMethod<char[]> selectionMethod =
+        new TournamentSelection<char[]>(fitnessMethod);
     StringMutationGA ga =
         new StringMutationGA(target.toCharArray(), 50, 0.05, true, fitnessMethod, selectionMethod);
     ga.initialise();

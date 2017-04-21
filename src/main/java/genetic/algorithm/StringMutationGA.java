@@ -38,17 +38,21 @@ public class StringMutationGA {
     }
   }
 
-  public void compute() {
+  public void compute(final boolean print) {
     char[] fittest = findFittest();
     int fitness = fitnessMethod.fitness(fittest);
-    System.out
-        .println(String.format("Gen: init | %s | Fitness: %04d", new String(fittest), fitness));
+    if (print) {
+      System.out
+          .println(String.format("Gen: init | %s | Fitness: %04d", new String(fittest), fitness));
+    }
     while (0 < fitness) {
       population = evolvePopulation();
       fittest = findFittest();
       fitness = fitnessMethod.fitness(fittest);
-      System.out.println(String.format("Gen: %04d | %s | Fitness: %04d", generation,
-          new String(fittest), fitness));
+      if (print) {
+        System.out.println(String.format("Gen: %04d | %s | Fitness: %04d", generation,
+            new String(fittest), fitness));
+      }
       generation++;
     }
   }
